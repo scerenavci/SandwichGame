@@ -10,12 +10,11 @@ public class TileNode
     public TileNode right;
     public TileNode up;
     public TileNode down;
-
+    public bool isOnTheTop=false;
     public List<TileNode> children = new List<TileNode>();
     public TileNode parent;
 
     public GameObject sceneObject;
-
     public TileData tile;
 
     public TileNode ParentOfAll

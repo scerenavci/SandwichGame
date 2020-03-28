@@ -9,12 +9,13 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     
-    public int levelNo = 2;
-    
-    
+    public int levelNo=1;
+
+    public int sandwichElementCount;
     private GridData levelData;
 
     private List<GridData> levels;
+    private Action<int> onLevelDataReady;
 
     void MakeInstance()
     {
@@ -34,17 +35,22 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GUIManager.instance.SetLevelText(levelNo);
+        onLevelDataReady += GameManager.instance.OnLevelDataReady;
     }
 
-    public void OnLevelDataReady()
-    {
-        Debug.Log("Levels data is ready.");
-    }
-    
     public GridData GetCurrentLevelData()
     {
         CheckLevelNo();
-        
+
+        foreach (var tile in levels[levelNo-1].tiles)
+        {
+            if (tile.tileState != TileData.TileState.EMPTY)
+            {
+                sandwichElementCount++;
+            }
+        }
+        Debug.Log($"Sandwich Element Count = ({sandwichElementCount}");
+        onLevelDataReady?.Invoke(sandwichElementCount);
         return levels[levelNo-1];
     }
 
@@ -71,5 +77,4 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     
-
 }

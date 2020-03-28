@@ -6,24 +6,23 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
 
-    private const float START_X = -2.3F;
-    private const float START_Y = 15.0f;
-    private const float START_Z = -6f;
+    private const float START_X = -5.0F;
+    private const float START_Y = 0f;
+    private const float START_Z = -12.3f;
     private const int DEFAULT_COLUMN_COUNT = 3;
     private const int DEFAULT_ROW_COUNT = 4;
-    private const float TILE_SIZE_X = 2.3F;
-    private const float TILE_SIZE_Z = 2.45F;
+    private const float TILE_SIZE_X = 4.7F;
+    private const float TILE_SIZE_Z = 5.2F;
     
     private int rows;
     private int columns;
-    private TileNode[,] grid;
+    public TileNode[,] grid;
 
     private GameObject bread;
     private GameObject cheese;
     private GameObject lettuce;
     private GameObject tomato;
     private GameObject empty;
-    private GameObject splashParticleSystem;
 
     void MakeInstance()
     {
