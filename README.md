@@ -1,3 +1,3 @@
-# Picker 3D Demo
+# Sandwich Game Demo
 
-![Picker 3D Demo](Demo/Picker3DDemoGif.gif)
+![Sandwich Game Demo](Demo/SandwichGameDemo.gif)
