@@ -38,7 +38,7 @@ public class GUIManager : MonoBehaviour
 
     public void SetLevelText(int levelNo)
     {
-        levelNoText.text = "Level " + levelNo;
+        levelNoText.text = "LEVEL " + levelNo;
     }
 
     private void ShowGreatMessage()
@@ -51,20 +51,11 @@ public class GUIManager : MonoBehaviour
     }
     public void ShowLevelPassedMessage()
     {
-        levelPassedMessage.DOScale(new Vector3(2.5f, 2.5f, 1.0f), 0.5f)
-            .OnComplete(() => { levelPassedMessage.DOPunchScale(new Vector3(.5f, .5f), 1.0f, 5, 1.0f); 
-            });
+        levelPassedMessage.gameObject.SetActive(true);
     }
     private void ShowLevelFailedMessage()
     {
-        levelFailedMessage.DOScale(new Vector3(2.5f, 2.5f, 1.0f), 0.5f)
-            .OnComplete(() => { levelFailedMessage.DOPunchScale(new Vector3(.5f, .5f), 1.0f, 5, 1.0f)
-                .OnComplete(() =>
-                {
-                    levelFailedMessage.DOScale(new Vector3(0f, 0f, 0f), 0.2f).SetDelay(0.3f);
-                }); 
-            })
-            .SetAutoKill(true);
+        levelFailedMessage.gameObject.SetActive(true);
     }
 
     private void SetResetAndUndoButtonDisable()
@@ -73,4 +64,13 @@ public class GUIManager : MonoBehaviour
         undoButton.GetComponent<Button>().enabled = false;
     }
 
+    public void OnTapToContinueButton()
+    {
+        LevelManager.instance.LoadNextLevel();
+    }
+
+    public void OnTapToReplayButton()
+    {
+        LevelManager.instance.LoadCurrentLevel();
+    }
 }

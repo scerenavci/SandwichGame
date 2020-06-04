@@ -67,7 +67,12 @@ public class LevelManager : MonoBehaviour
         CheckLevelNo();
         PlayerPrefs.SetInt("LevelNo", levelNo);
         DOTween.KillAll();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LoadCurrentLevel()
+    {
+        DOTween.KillAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void LoadPrevLevel()
